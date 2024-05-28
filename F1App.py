@@ -725,7 +725,7 @@ def driver_stats():
     
     df_photo = df_drivers.merge(df_picture, on='Driver_name', how='left')
     df_photo = df_photo.sort_values(by="Photo url")
-    df_photo['Photo url'] = df_photo['Photo url'].fillna('C:/Users/33782/Desktop/Mémoire F1/Picture/unknown.jpg')
+    df_photo['Photo url'] = df_photo['Photo url'].fillna('https://raw.githubusercontent.com/Mohbadi/AppF1/main/Picture/unknown.jpg')
     
     
     # Affichage de la liste des pilotes
@@ -812,7 +812,7 @@ def constructor_stats():
     
     df_photo = df_constructor.merge(df_car, on='name', how='left')
     df_photo = df_photo.sort_values(by="Photo url")
-    df_photo['Photo url'] = df_photo['Photo url'].fillna('C:/Users/33782/Desktop/Mémoire F1/Picture/unknown.jpg')
+    df_photo['Photo url'] = df_photo['Photo url'].fillna('https://raw.githubusercontent.com/Mohbadi/AppF1/main/Picture/unknown.jpg')
     
     
     # Affichage de la liste des pilotes
@@ -898,7 +898,7 @@ def circuits_info():
     
     df_photo1 = df_circuit.merge(df_layout, on='location', how='left')
     df_photo1 = df_photo1.sort_values(by="Photo url")
-    df_photo1['Photo url'] = df_photo1['Photo url'].fillna('C:/Users/33782/Desktop/Mémoire F1/Picture/unknown.jpg')
+    df_photo1['Photo url'] = df_photo1['Photo url'].fillna('https://raw.githubusercontent.com/Mohbadi/AppF1/main/Picture/unknown.jpg')
     
     # Affichage de la liste des pilotes
     selected_circuit = st.selectbox("Select a circuit :", df_photo1['name'])
