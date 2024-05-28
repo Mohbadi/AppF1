@@ -1,15 +1,3 @@
-import subprocess
-import sys
-
-# Function to install packages
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-# Install necessary packages
-
-install('folium')
-install('streamlit-folium')
-
 
 import pandas as pd
 import streamlit as st
