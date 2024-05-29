@@ -1119,9 +1119,7 @@ def pred_podium():
     row = row.reshape(1, -1)
     scaler = joblib.load("scaler_GB.joblib")
     row1 = scaler.transform(row.reshape(1, -1))    
-    prediction = model.predict(row1)
-    st.write(row1)
-    st.write(prediction)
+
 
     c1, c2, c3 = st.columns(3)
     
@@ -1260,11 +1258,9 @@ def pred_win():
     row = np.concatenate([other_features, dummy_nationality])
     row = row.reshape(1, -1)
     
-    scaler = joblib.load("scaler_svm.joblib")
-    row2 = scaler.transform(row.reshape(1, -1))    
-    prediction = model_svm.predict(row2)
-    st.write(row2)
-    st.write(prediction)
+    scaler1 = joblib.load("scaler_svm.joblib")
+    row2 = scaler1.transform(row.reshape(1, -1))    
+
     c1, c2, c3 = st.columns(3)
     
     with c1:
