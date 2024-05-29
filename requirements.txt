@@ -13,4 +13,3 @@ seaborn
 plotly
 openpyxl
 imbalanced-learn
-pickle
