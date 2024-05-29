@@ -1296,7 +1296,7 @@ st.sidebar.markdown('---')
 st.sidebar.markdown("<h1 style='text-align: center; color: black;'>Navigation</h1>", unsafe_allow_html=True)
 
 # Display buttons for navigation
-selected_page = st.sidebar.radio("",["Home", "Formula 1 Season", "Driver Stats", "Constructor Stats", "Circuits", "Podium Finish Prediction", "Winner Prediction"])
+selected_page = st.sidebar.radio("",["Home", "Formula 1 Season", "Driver Stats", "Constructor Stats", "Circuits", "Podium Finish Prediction", "Winner Prediction (In progress)"])
 
 if selected_page == "Home":
     home()
@@ -1310,7 +1310,7 @@ elif selected_page == "Circuits":
     circuits_info()
 elif selected_page == "Podium Finish Prediction":
     pred_podium()
-elif selected_page == "Winner Prediction":
+elif selected_page == "Winner Prediction (In progress)":
     pred_win()
     
 st.sidebar.markdown('---')
