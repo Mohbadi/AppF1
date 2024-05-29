@@ -9,6 +9,7 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 import joblib
+import pickle
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
 import numpy as np
 
@@ -983,8 +984,8 @@ def circuits_info():
 def pred_podium():
     st.markdown("<div style='text-align: center;'><h1>Podium Prediction</h1></div>", unsafe_allow_html=True)
 
-    # Charger votre modèle
-    model = joblib.load('GB.joblib')
+    with open('GB.pkl', 'rb') as f:
+        model = pickle.load(f)
 
     
     
