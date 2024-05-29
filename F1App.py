@@ -10,6 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import joblib
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
+import sklearn.ensemble._gb_losses
 import numpy as np
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -1111,7 +1112,7 @@ def pred_podium():
         
         st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
         if st.button('Prédire'):
-            prediction = model.predict(row)
+            prediction = model.predict(row1)
             # Affichage du résultat de manière esthétique
             if prediction == 1:
                 with st.info("Podium"):
