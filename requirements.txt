@@ -13,3 +13,5 @@ seaborn
 plotly
 openpyxl
 imbalanced-learn
+threadpoolctl
+spicy
