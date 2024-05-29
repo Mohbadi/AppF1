@@ -10,7 +10,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import joblib
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
-from sklearn.ensemble import _gb_losses
 import numpy as np
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
