@@ -12,6 +12,8 @@ import joblib
 import pickle
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
 import numpy as np
+import sklearn as sk
+
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 # Load data
@@ -589,7 +591,25 @@ def boxplot_by_team_for_year(year, selected_team):
 def home():
     # Centered title for the homepage
     st.markdown("<div style='text-align: center;'><h1>Welcome to our Formula 1 Application</h1></div>", unsafe_allow_html=True)
-    st.write("Select an option from the sidebar to get started.")
+    st.markdown('---')
+    st.image('F1Logo.png', use_column_width=True)
+    st.markdown('---')
+    st.markdown("<div style='text-align: center;'><h1 style='font-size: 20px;'>Allow yourself to be swept up in the exhilarating speed of Formula 1 and identify the drivers who will emerge as future champions, based on your selections</h1></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: center;'><h1 style='font-size: 18px;'>Tabs Description :</h1></div>", unsafe_allow_html=True)
+
+    st.markdown(
+        """
+        <div style="text-align: center;">
+            - <b>Formula 1 season</b> : Season insights analysis <br>
+            - <b>Driver Stats</b> : Driver performance details and analysis <br>
+            - <b>Constructor Stats</b> : Team performance insights and analysis <br>
+            - <b>Circuits</b> : Detailed information on the season's tours <br>
+            - <b>Podium Finish Prediction</b> : Podium predictions for upcoming races <br>
+            - <b>Winner Prediction</b> : Race winner predictions
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     
 # Function for the current season tab
 
@@ -655,10 +675,9 @@ def current_season():
         c3.metric("Number of nationality", len(nb_nationality))
     
     with st.expander(f"Round {selected_round} details"):
-        c6,c4, c5 = st.columns(3)
+        c6,c4 = st.columns(2)
         c6.metric("Country", country)
         c4.metric("Grand Prix :checkered_flag:", race_name)
-        c5.metric("Weather :sunny::rain_cloud:", "A faire")
     
     
     col_1, col_2 = st.columns(2)
@@ -1010,7 +1029,7 @@ def pred_podium():
     
     
             # Sélection de la nationalité
-            selected_nationality = st.selectbox('Sélectionnez une nationalité', nationality)
+            selected_nationality = st.selectbox('Select a nationality', nationality)
     
             # Transformation en dummy
             def transform_nationality(selected_nationality, encoder):
@@ -1152,7 +1171,7 @@ def pred_win():
     
     
             # Sélection de la nationalité
-            selected_nationality = st.selectbox('Sélectionnez une nationalité', nationality)
+            selected_nationality = st.selectbox('Select a nationality', nationality)
     
             # Transformation en dummy
             def transform_nationality(selected_nationality, encoder):
@@ -1242,9 +1261,9 @@ def pred_win():
     row = row.reshape(1, -1)
     
     scaler = joblib.load("scaler_svm.joblib")
-    row1 = scaler.transform(row.reshape(1, -1))    
-    prediction = model_svm.predict(row1)
-    st.write(row1)
+    row2 = scaler.transform(row.reshape(1, -1))    
+    prediction = model_svm.predict(row2)
+    st.write(row2)
     st.write(prediction)
     c1, c2, c3 = st.columns(3)
     
@@ -1254,7 +1273,7 @@ def pred_win():
         
         st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
         if st.button('Prédire'):
-            prediction = model_svm.predict(row1)
+            prediction = model_svm.predict(row2)
             # Affichage du résultat de manière esthétique
             if prediction == 1:
                 with st.info("Podium"):
@@ -1274,18 +1293,18 @@ def pred_win():
 # Centered title in the sidebar with enhanced appearance
 st.sidebar.image('F1Logo.png', use_column_width=True)
 st.sidebar.markdown(
-    "<div style='text-align: center;'><h1><strong>Formula 1 Decision Maker</strong></h1></div>", 
+    "<div style='text-align: center;'><h1><strong>Formula 1 Project</strong></h1></div>", 
     unsafe_allow_html=True
 )
 st.sidebar.markdown('---')
 st.sidebar.markdown("<h1 style='text-align: center; color: black;'>Navigation</h1>", unsafe_allow_html=True)
 
 # Display buttons for navigation
-selected_page = st.sidebar.radio("",["Home", "Formula 1's Season", "Driver Stats", "Constructor Stats", "Circuits", "Podium Finish Prediction", "Winner Prediction"])
+selected_page = st.sidebar.radio("",["Home", "Formula 1 Season", "Driver Stats", "Constructor Stats", "Circuits", "Podium Finish Prediction", "Winner Prediction"])
 
 if selected_page == "Home":
     home()
-elif selected_page == "Formula 1's Season":
+elif selected_page == "Formula 1 Season":
     current_season()
 elif selected_page == "Driver Stats":
     driver_stats()
