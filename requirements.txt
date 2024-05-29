@@ -4,7 +4,7 @@ GitPython
 numpy
 pandas
 requests
-streamlit==1.28.2
+streamlit
 streamlit_folium
 joblib
 scikit-learn==1.5.0
@@ -12,3 +12,4 @@ matplotlib
 seaborn
 plotly
 openpyxl
+imbalanced-learn
