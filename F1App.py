@@ -13,7 +13,7 @@ import pickle
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
 import numpy as np
 import sklearn as sk
-
+import streamlit.components.v1 as components
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 # Load data
@@ -595,8 +595,11 @@ def home():
     st.image('F1Logo.png', use_column_width=True)
     st.markdown('---')
     st.markdown("<div style='text-align: center;'><h1 style='font-size: 20px;'>Allow yourself to be swept up in the exhilarating speed of Formula 1 and identify the drivers who will emerge as future champions, based on your selections</h1></div>", unsafe_allow_html=True)
-    st.markdown("<div style='text-align: center;'><h1 style='font-size: 18px;'>Tabs Description :</h1></div>", unsafe_allow_html=True)
 
+    st.markdown('---')
+    components.iframe("https://docs.google.com/presentation/d/e/2PACX-1vRNHxF_t_yALsV4g6w51hc8cEY9fpEuI6KRT0Y5KwP261sLQTlq97jubW90n3aSyQjtPVb-bCg2jhF5/embed?start=false&loop=false&delayms=3000", height=480)
+    st.markdown('---')
+    st.markdown("<div style='text-align: center;'><h1 style='font-size: 18px;'>Tabs Description :</h1></div>", unsafe_allow_html=True)
     st.markdown(
         """
         <div style="text-align: center;">
@@ -826,8 +829,8 @@ def driver_stats():
 
 # Function for the constructors' stats tab
 def constructor_stats():
-    st.title("Constructor Statistics")
-    st.write("Constructor statistics will be displayed here.")
+    st.markdown("<div style='text-align: center;'><h1>Constructor statistics</h1></div>", unsafe_allow_html=True)
+
     
     
     df_photo = df_constructor.merge(df_car, on='name', how='left')
@@ -1128,7 +1131,7 @@ def pred_podium():
     with c2:
         
         st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
-        if st.button('Prédire'):
+        if st.button('Predict'):
             prediction = model.predict(row1)
             # Affichage du résultat de manière esthétique
             if prediction == 1:
@@ -1268,7 +1271,7 @@ def pred_win():
     with c2:
         
         st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
-        if st.button('Prédire'):
+        if st.button('Predict'):
             prediction = model_svm.predict(row2)
             # Affichage du résultat de manière esthétique
             if prediction == 1:
@@ -1296,7 +1299,7 @@ st.sidebar.markdown('---')
 st.sidebar.markdown("<h1 style='text-align: center; color: black;'>Navigation</h1>", unsafe_allow_html=True)
 
 # Display buttons for navigation
-selected_page = st.sidebar.radio("",["Home", "Formula 1 Season", "Driver Stats", "Constructor Stats", "Circuits", "Podium Finish Prediction", "Winner Prediction (In progress)"])
+selected_page = st.sidebar.radio("",["Home", "Formula 1 Season", "Driver Stats", "Constructor Stats", "Circuits", "Podium Finish Prediction", "Winner Prediction"])
 
 if selected_page == "Home":
     home()
@@ -1310,7 +1313,7 @@ elif selected_page == "Circuits":
     circuits_info()
 elif selected_page == "Podium Finish Prediction":
     pred_podium()
-elif selected_page == "Winner Prediction (In progress)":
+elif selected_page == "Winner Prediction":
     pred_win()
     
 st.sidebar.markdown('---')
